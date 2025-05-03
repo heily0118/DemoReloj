@@ -59,7 +59,36 @@ public class Reloj extends Thread {
         
    @Override
     public void run(){
-      
+            while (true) {
+          try {
+              Thread.sleep(1000); 
+          } catch (InterruptedException e) {
+              System.out.println("El reloj fue interrumpido.");
+              break; 
+          }
+
+          segundos++;
+          if (segundos >= 60) {
+              segundos = 0;
+              minutos++;
+          }
+
+          if (minutos >= 60) {
+              minutos = 0;
+              hora++;
+          }
+
+          if (hora >= 24) {
+              hora = 0;
+          }
+
+          
+          timeStamp = (hora * 3600 + minutos * 60 + segundos) * 1000L;
+
+        
+         System.out.println("Hora actual: " + hora + ":" + minutos + ":" + segundos);
+      }
+
     }
     
 }
