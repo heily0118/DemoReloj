@@ -24,7 +24,7 @@ public class DemoReloj {
       reloj.getSegundos().start();
 
       while (true) {
-          System.out.println(reloj.getHoraActual());
+          System.out.println("Hora actual : " + reloj.getHoraActual());
           Thread.sleep(1000);  
       }
   }
