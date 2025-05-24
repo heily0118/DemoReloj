@@ -11,42 +11,44 @@ package autonoma.demoreloj.models;
  * @since 20250503
  * @version 1.0.0
  */
-public class Reloj extends Thread {
-    private int hora;
-    private int minutos;
-    private int segundos;
+public class Reloj  {
+    private Hora hora;
+    private Minuto minutos;
+    private Segundo segundos;
     private long timeStamp;
 
-    public Reloj(int hora, int minutos, int segundos,long timeStamp) {
+    public Reloj(Hora hora, Minuto minutos, Segundo segundos, long timeStamp) {
         this.hora = hora;
         this.minutos = minutos;
         this.segundos = segundos;
-        this.timeStamp= timeStamp;
+        this.timeStamp = timeStamp;
     }
 
-    public int getHora() {
+    public Hora getHora() {
         return hora;
     }
 
-    public void setHora(int hora) {
+    public void setHora(Hora hora) {
         this.hora = hora;
     }
 
-    public int getMinutos() {
+    public Minuto getMinutos() {
         return minutos;
     }
 
-    public void setMinutos(int minutos) {
+    public void setMinutos(Minuto minutos) {
         this.minutos = minutos;
     }
 
-    public int getSegundos() {
+    public Segundo getSegundos() {
         return segundos;
     }
 
-    public void setSegundos(int segundos) {
+    public void setSegundos(Segundo segundos) {
         this.segundos = segundos;
     }
+
+
 
     public long getTimeStamp() {
         return timeStamp;
@@ -56,39 +58,5 @@ public class Reloj extends Thread {
         this.timeStamp = timeStamp;
     }
     
-        
-   @Override
-    public void run(){
-            while (true) {
-          try {
-              Thread.sleep(1000); 
-          } catch (InterruptedException e) {
-              System.out.println("El reloj fue interrumpido.");
-              break; 
-          }
-
-          segundos++;
-          if (segundos >= 60) {
-              segundos = 0;
-              minutos++;
-          }
-
-          if (minutos >= 60) {
-              minutos = 0;
-              hora++;
-          }
-
-          if (hora >= 24) {
-              hora = 0;
-          }
-
-          
-          timeStamp = (hora * 3600 + minutos * 60 + segundos) * 1000L;
-
-        
-         System.out.println("Hora actual: " + hora + ":" + minutos + ":" + segundos);
-      }
-
-    }
-    
+ 
 }
