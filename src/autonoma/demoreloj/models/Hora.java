@@ -28,11 +28,26 @@ public class Hora extends Thread {
     public void run() {
         while (true) {
             try {
-                Thread.sleep(3600 * 1000); 
+                Thread.sleep(3600 * 1000);
                 incrementar();
             } catch (InterruptedException e) {
+              
                 break;
             }
         }
     }
+
+    public void detener() {
+        this.interrupt();  
+    }
+
+    public int getHora() {
+        return hora;
+    }
+
+    public void setHora(int hora) {
+        this.hora = hora;
+    }
+    
+    
 }

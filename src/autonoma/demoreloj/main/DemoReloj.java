@@ -8,7 +8,7 @@ import autonoma.demoreloj.models.Reloj;
 
 /**
  *
-*  @author Heily Yohana Rios Ayala <heilyy.riosa@gmail.com>
+*  @author Heily Yohana Rios Ayala <heilyy.riosa@autonoma.edu.co>
  * @since 20250503
  * @version 1.0.0
  */
@@ -17,12 +17,17 @@ public class DemoReloj {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        // TODO code application logic here
-        
-        Reloj reloj = new Reloj(02,14,00,0);
-        
-        reloj.start();
-    }
+    public static void main(String[] args) throws InterruptedException {
+      Reloj reloj = new Reloj(2,34,12);
+      reloj.getHora().start();
+      reloj.getMinutos().start();
+      reloj.getSegundos().start();
+
+      while (true) {
+          System.out.println(reloj.getHoraActual());
+          Thread.sleep(1000);  
+      }
+  }
+
     
 }

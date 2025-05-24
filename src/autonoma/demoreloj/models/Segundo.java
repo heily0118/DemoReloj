@@ -9,7 +9,7 @@ package autonoma.demoreloj.models;
 public class Segundo extends Thread {
     private int segundos;
     private Minuto minuto;
-    private volatile boolean running = true;  
+  
 
     public Segundo(Minuto minuto) {
         this.minuto = minuto;
@@ -18,7 +18,7 @@ public class Segundo extends Thread {
 
     @Override
     public void run() {
-        while (running) {
+        while (true) {
             try {
                 Thread.sleep(1000);
                 segundos++;
@@ -27,14 +27,33 @@ public class Segundo extends Thread {
                     minuto.incrementar();
                 }
             } catch (InterruptedException e) {
-                running = false;
+               
                 break;
             }
         }
     }
 
-    public void detener() {
-        running = false;
-        this.interrupt();
+     public void detener() {
+        this.interrupt();  
     }
+
+    public int getSegundos() {
+        return segundos;
+    }
+
+    public void setSegundos(int segundos) {
+        this.segundos = segundos;
+    }
+
+    public Minuto getMinuto() {
+        return minuto;
+    }
+
+    public void setMinuto(Minuto minuto) {
+        this.minuto = minuto;
+    }
+
+
+    
 }
+
